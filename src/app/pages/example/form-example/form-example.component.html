@@ -1,0 +1,24 @@
+<div>
+  <h3 class="text-center">Tambah Example</h3>
+  <div class="card p-3">
+    <form [formGroup]="formExample" (submit)="save()">
+      <div class="mb-3">
+        <label  class="form-label">Nama</label>
+        <input type="text" formControlName="nama" class="form-control" placeholder="Nama Lengkap">
+      </div>
+      <div class="mb-3">
+        <label f class="form-label">Role</label>
+        <select formControlName="role" class="form-control">
+          <option disabled selected>Pilih Role...</option>
+          <option value="Fullstack Developer">Fullstack Developer</option>
+          <option value="Backend Developer">Backend Developer</option>
+          <option value="Frontend Developer">Frontend Developer</option>
+          <option value="Metaverse Developer">Metaverse Developer</option>
+          <option value="2D/3D Animation">2D/3D Animation</option>
+        </select>
+      </div>
+      <button type="submit" [disabled]="formExample.invalid" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+</div>
