@@ -1,0 +1,56 @@
+stages:
+  - pre-build
+  - test
+  - build
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+default:
+  tags:
+    - docker
+
+include:
+  - project: tabeldata.co.id/gitlab-cicd-templates
+    ref: main
+    file: build.angular.gitlab-ci.yml
+  - project: tabeldata.co.id/gitlab-cicd-templates
+    ref: main
+    file: build.docker.gitlab-ci.yml
+  - project: tabeldata.co.id/gitlab-cicd-templates
+    ref: main
+    file: trigger.deploy.gitlab-ci.yml
+
+ng:build:production:
+  extends: .build-ng
+  variables:
+    NG_MEMORY_HEAP: "--max_old_space_size=8192"
+    NODE_VERSION: "14.15-alpine"
+  stage: build
+  only:
+    - /-release/
+
+build:docker:
+  stage: build
+  extends: .build-docker
+  variables:
+    DOCKER_BUILD_ARGS_ENTRIPOINT: "--build-arg BUILD_FOLDER=dist/"
+    DOCKERFILE_LOCATION: "-f Dockerfile"
+  needs:
+    - ng:build:production
+    - get-fact:project:info
+  only:
+    - /-release/
+
+trigger:deploy:review:
+  extends: .trigger_pipeline
+  stage: deploy
+  needs:
+    - get-fact:project:info
+    - build:docker
+  rules:
+    - if: $CI_ENV_REVIEW_ENABLED == "true" && $CI_COMMIT_TAG
+      when: always
+    - when: never
