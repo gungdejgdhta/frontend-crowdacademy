@@ -1,18 +1,39 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-transparent container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-custom">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand ms-3" href="#">CrowdAcademy</a>
+    <button aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+            data-bs-target="#navbarText" data-bs-toggle="collapse" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       </ul>
       <span class="navbar-text">
-        <a class="m-1 text-decoration-none" [routerLink]="['/','login']">Login</a>
-        <a class="m-1 text-decoration-none" [routerLink]="['/','register']">Register</a>
+        <a [routerLink]="['/','about']" class="me-4 text-decoration-none">About</a>
+        <a [routerLink]="['/','login']" class="me-4 text-decoration-none">Sign In</a>
+        <button class="me-5 btn btn-custom-1" [routerLink]="['/','register']">Sign Up</button>
       </span>
     </div>
   </div>
 </nav>
 <div class="container">
-  <h1 class="text-center mt-5">Landing Page</h1>
+  <div class="row">
+    <div class="col">
+      <h1 class="text-1" style="margin-top: 150px">CROWD</h1>
+      <h1 class="text-2" style="margin-top: -15px">ACADEMY</h1>
+      <hr class="border-custom">
+      <p class="text-3" style="margin-right: 150px">
+        Sebuah platform pembelajaran online berbasis crowd untuk kebutuhan
+        peningkatan kapabilitas tim yang terlibat dalam proses pengembangan dan
+        eksplorasi produk maupun layanan perbankan digital
+      </p>
+      <button [routerLink]="['/','dashboard']" class="btn btn-custom-2 mt-5">Go Explore!</button>
+    </div>
+    <div class="col"
+    style="margin-top: 100px">
+      <img src="assets/images/img-landing.png" width="700px">
+    </div>
+  </div>
 </div>
+<br>
+<app-footer></app-footer>

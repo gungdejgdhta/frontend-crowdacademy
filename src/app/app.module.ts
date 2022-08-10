@@ -48,6 +48,7 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { FooterComponent } from './pages/footer/footer.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -60,7 +61,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, LoginComponent, RegisterComponent, LandingPageComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, LoginComponent, RegisterComponent, LandingPageComponent, FooterComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

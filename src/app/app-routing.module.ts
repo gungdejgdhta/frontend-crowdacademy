@@ -38,6 +38,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/pages/pages.module').then((m) => m.PagesModule)
       },
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('./pages/profile/profile.module').then((m) => m.ProfileModule)
+      }
     ]
   },
   {
