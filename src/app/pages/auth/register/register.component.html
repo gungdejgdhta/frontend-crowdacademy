@@ -1,41 +1,74 @@
-<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
-  <c-container>
-    <c-row class="justify-content-center">
-      <c-col lg="7" md="9" xl="6">
-        <c-card class="mx-4">
-          <c-card-body class="p-4">
-            <form cForm>
-              <h1>Register</h1>
-              <p class="text-medium-emphasis">Create your account</p>
-              <c-input-group class="mb-3">
-                <span cInputGroupText>
-                  <svg cIcon name="cilUser"></svg>
-                </span>
-                <input autoComplete="name" cFormControl placeholder="Username" />
-              </c-input-group>
-              <c-input-group class="mb-3">
-                <span cInputGroupText>@</span>
-                <input autoComplete="email" cFormControl placeholder="Email" />
-              </c-input-group>
-              <c-input-group class="mb-3">
-                <span cInputGroupText>
-                  <svg cIcon name="cilLockLocked"></svg>
-                </span>
-                <input autoComplete="new-password" cFormControl placeholder="Password" type="password" />
-              </c-input-group>
-              <c-input-group class="mb-4">
-                <span cInputGroupText>
-                  <svg cIcon name="cilLockLocked"></svg>
-                </span>
-                <input autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" />
-              </c-input-group>
-              <div class="d-grid">
-                <button [routerLink]="['/','dashboard']" cButton color="success">Create Account</button>
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container py-5 h-80">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+
+                <div class="text-center">
+                  <h3 class="text-1 mt-4">Sign Up</h3>
+                  <p class="text-2 mb-4" style="font-size: 14px">Let’s get you all set up so you can start
+                    creating your first onboarding experience</p>
+                </div>
+
+                <form>
+                  <div class="mb-4">
+                    <label class="text-2 form-label">Email</label>
+                    <input class="input-1 form-control" id="form2Example11" placeholder="Enter your email address"
+                           type="email"/>
+                  </div>
+
+                  <div class="mb-4">
+                    <label class="text-2 form-label">Role</label>
+                    <select class="input-1 form-select">
+                      <option selected>Select your role</option>
+                      <option value="1">Trainer</option>
+                      <option value="2">Learner</option>
+                    </select>
+                  </div>
+
+
+                  <div class="mb-4">
+                    <label class="text-2 form-label">Password</label>
+                    <input class="form-control input-1" placeholder="Enter your password" type="password"/>
+                  </div>
+
+                  <div class="mb-4">
+                    <label class="text-2 form-label">Retype Password</label>
+                    <input class="form-control input-1" placeholder="Retype your password" type="password"/>
+                  </div>
+
+                  <div class="d-grid gap-2 text-center mb-4 mt-5">
+                    <button
+                      [routerLink]="['/', 'dashboard']"
+                      class="btn btn-custom-1 btn-group-lg"
+                      type="button">Sign Up</button>
+                    <hr>
+                    <button class="btn btn-custom-2" type="button">Continue With Google</button>
+                  </div>
+
+                  <div class="d-flex align-items-center justify-content-center mt-5">
+                    <p class="text-4 mb-0 me-1">Already have an account?</p>
+                    <a
+                      [routerLink]="['/', 'login']"
+                      class="text-decoration-none text-4" href="#"><strong>Sign In</strong></a>
+                  </div>
+                </form>
+
               </div>
-            </form>
-          </c-card-body>
-        </c-card>
-      </c-col>
-    </c-row>
-  </c-container>
-</div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4 mt-5">
+                <img alt="" src="assets/images/img-sign.png" style="width: 400px">
+                <h4 class="mt-5 text-center text-white text-1">Crowd Academy</h4>
+                <p class="text-center text-white text-2">Crowd Academy Website</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

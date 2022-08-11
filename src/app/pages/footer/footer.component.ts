@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {freeSet} from "@coreui/icons";
 
 @Component({
   selector: 'app-footer',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+
+  icons = freeSet;
 
   constructor() { }
 
