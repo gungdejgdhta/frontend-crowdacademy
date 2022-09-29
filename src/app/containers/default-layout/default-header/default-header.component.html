@@ -19,11 +19,16 @@
         </a>
       </c-nav-item>
       <c-nav-item>
-        <a cNavLink routerLink="/users" routerLinkActive="active">Users</a>
+        <a cNavLink [routerLink]="['/', 'users']" routerLinkActive="active">Users</a>
       </c-nav-item>
       <c-nav-item>
         <a cNavLink routerLink="/settings" routerLinkActive="active">
           Settings
+        </a>
+      </c-nav-item>
+      <c-nav-item>
+        <a cNavLink routerLink="/settings" routerLinkActive="active">
+          Enroll
         </a>
       </c-nav-item>
     </c-header-nav>
@@ -119,12 +124,6 @@
         <h6 cDropdownHeader class="bg-light fw-semibold py-2">Settings</h6>
       </li>
       <li></li>
-      <li>
-        <a routerLink="./" cDropdownItem>
-          <svg cIcon class="me-2" name="cilUser"></svg>
-          Profile
-        </a>
-      </li>
       <li>
         <a routerLink="./" cDropdownItem>
           <svg cIcon class="me-2" name="cilSettings"></svg>

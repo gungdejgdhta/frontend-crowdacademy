@@ -1,0 +1,70 @@
+<div>
+  <h3 class="text-center">{{jenisMenu}} Akun</h3>
+  <div class="card p-3">
+    <form [formGroup]="formAkun">
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input
+          [class.is-invalid]="formAkun.controls['username'].invalid && formAkun.controls['username'].touched"
+          formControlName="username"
+          class="form-control" placeholder="Username" type="text">
+        <div
+          *ngIf="formAkun.controls['username'].hasError('required')"
+          class="invalid-feedback">Username is required</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Nama Lengkap</label>
+        <input
+          [class.is-invalid]="formAkun.controls['nama_lengkap'].invalid && formAkun.controls['nama_lengkap'].touched"
+          formControlName="nama_lengkap"
+          class="form-control" placeholder="Nama Lengkap" type="text">
+        <div
+          *ngIf="formAkun.controls['nama_lengkap'].hasError('required')"
+          class="invalid-feedback">Nama lengkap is required</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Alamat</label>
+        <textarea
+          [class.is-invalid]="formAkun.controls['alamat'].invalid && formAkun.controls['alamat'].touched"
+          formControlName="alamat"
+          class="form-control" placeholder="Alamat Lengkap" rows="3" type="text"></textarea>
+        <div
+          *ngIf="formAkun.controls['alamat'].hasError('required')"
+          class="invalid-feedback">Alamat is required</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Umur</label>
+        <input
+          [class.is-invalid]="formAkun.controls['umur'].invalid && formAkun.controls['umur'].touched"
+          formControlName="umur"
+          class="form-control" placeholder="Umur" type="number">
+        <div
+          *ngIf="formAkun.controls['umur'].hasError('required')"
+          class="invalid-feedback">Umur is required</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Universitas</label>
+        <input
+          [class.is-invalid]="formAkun.controls['universitas'].invalid && formAkun.controls['universitas'].touched"
+          formControlName="universitas"
+          class="form-control" placeholder="Universitas" type="text">
+        <div
+          *ngIf="formAkun.controls['universitas'].hasError('required')"
+          class="invalid-feedback">Universitas is required</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">User Id</label>
+        <select
+          [class.is-invalid]="formAkun.controls['app_users_id'].invalid && formAkun.controls['app_users_id'].touched"
+          formControlName="app_users_id" class="form-select">
+          <option selected>Select your user id</option>
+          <option *ngFor="let app_users_id of listUser">{{app_users_id.id}}</option>
+        </select>
+        <div
+          *ngIf="formAkun.controls['app_users_id'].hasError('required')"
+          class="invalid-feedback">User id is required</div>
+      </div>
+      <button (click)="save()" class="btn btn-primary" type="button">Submit</button>
+    </form>
+  </div>
+</div>

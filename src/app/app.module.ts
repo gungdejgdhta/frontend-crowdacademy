@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { BrowserModule, Title } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {HashLocationStrategy, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {BrowserModule, Title} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ReactiveFormsModule} from '@angular/forms';
 
 import {
   PERFECT_SCROLLBAR_CONFIG,
@@ -11,10 +11,10 @@ import {
 } from 'ngx-perfect-scrollbar';
 
 // Import routing module
-import { AppRoutingModule } from './app-routing.module';
+import {AppRoutingModule} from './app-routing.module';
 
 // Import app component
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 
 // Import containers
 import {
@@ -44,11 +44,15 @@ import {
   UtilitiesModule,
 } from '@coreui/angular';
 
-import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { LoginComponent } from './pages/auth/login/login.component';
-import { RegisterComponent } from './pages/auth/register/register.component';
-import { LandingPageComponent } from './pages/landing-page/landing-page.component';
-import { FooterComponent } from './pages/footer/footer.component';
+import {IconModule, IconSetService} from '@coreui/icons-angular';
+import {LoginComponent} from './pages/auth/login/login.component';
+import {RegisterComponent} from './pages/auth/register/register.component';
+import {LandingPageComponent} from './pages/landing-page/landing-page.component';
+import {FooterComponent} from './pages/footer/footer.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthInterceptor} from "./auth.interceptor";
+import {AuthService} from "./auth.service";
+import { UsersComponent } from './pages/users/users.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -61,7 +65,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, LoginComponent, RegisterComponent, LandingPageComponent, FooterComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, LoginComponent, RegisterComponent, LandingPageComponent, FooterComponent, UsersComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -89,8 +93,14 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
+    HttpClientModule,
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
@@ -99,6 +109,7 @@ const APP_CONTAINERS = [
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
+    AuthService,
     IconSetService,
     Title
   ],

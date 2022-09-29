@@ -7,6 +7,7 @@ import { Page500Component } from './views/pages/page500/page500.component';
 import {LoginComponent} from "./pages/auth/login/login.component";
 import {RegisterComponent} from "./pages/auth/register/register.component";
 import {LandingPageComponent} from "./pages/landing-page/landing-page.component";
+import {UsersComponent} from "./pages/users/users.component";
 
 const routes: Routes = [
   {
@@ -39,6 +40,16 @@ const routes: Routes = [
           import('./views/pages/pages.module').then((m) => m.PagesModule)
       },
       {
+        path: 'users',
+        loadChildren: () =>
+          import('./pages/users/users.module').then((m) => m.UsersModule)
+      },
+      {
+        path: 'akun',
+        loadChildren: () =>
+          import('./pages/akun/akun.module').then((m) => m.AkunModule)
+      },
+      {
         path: 'profile',
         loadChildren: () =>
           import('./pages/profile/profile.module').then((m) => m.ProfileModule)
@@ -57,6 +68,13 @@ const routes: Routes = [
     component: RegisterComponent,
     data: {
       title: 'Register Page'
+    }
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    data: {
+      title: 'Users Page'
     }
   },
   {

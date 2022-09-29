@@ -5,7 +5,9 @@
         <div class="card rounded-3 text-black">
           <div class="row g-0">
             <div class="col-lg-6">
-              <div class="card-body p-md-5 mx-md-4">
+              <form
+                [formGroup]="formRegister"
+                class="card-body p-md-5 mx-md-4">
 
                 <div class="text-center">
                   <h3 class="text-1 mt-4">Sign Up</h3>
@@ -16,37 +18,93 @@
                 <form>
                   <div class="mb-4">
                     <label class="text-2 form-label">Email</label>
-                    <input class="input-1 form-control" id="form2Example11" placeholder="Enter your email address"
-                           type="email"/>
+                    <input
+                      [class.is-invalid]="formRegister.controls['email'].invalid && formRegister.controls['email'].touched"
+                      class="input-1 form-control"
+                      formControlName="email"
+                      placeholder="Enter your email address"
+                      type="email"/>
+                    <div
+                      *ngIf="formRegister.controls['email'].hasError('required')"
+                      class="input-2 invalid-feedback">
+                      Email is required
+                    </div>
+                    <div
+                      *ngIf="formRegister.controls['email'].hasError('email')"
+                      class="input-2 invalid-feedback">
+                      Email doesn't match
+                    </div>
                   </div>
 
                   <div class="mb-4">
                     <label class="text-2 form-label">Role</label>
-                    <select class="input-1 form-select">
+                    <select
+                      [class.is-invalid]="formRegister.controls['role_id'].invalid && formRegister.controls['role_id'].touched"
+                      class="input-1 form-select"
+                      formControlName="role_id">
                       <option selected>Select your role</option>
-                      <option value="1">Trainer</option>
-                      <option value="2">Learner</option>
+                      <option *ngFor="let role of listRole">{{role.id}}</option>
                     </select>
+                    <div
+                      *ngIf="formRegister.controls['role_id'].hasError('required')"
+                      class="input-2 invalid-feedback">
+                      Role is required
+                    </div>
                   </div>
 
 
                   <div class="mb-4">
                     <label class="text-2 form-label">Password</label>
-                    <input class="form-control input-1" placeholder="Enter your password" type="password"/>
+                    <input
+                      [class.is-invalid]="formRegister.controls['password'].invalid && formRegister.controls['password'].touched"
+                      class="form-control input-1"
+                      formControlName="password"
+                      placeholder="Enter your password"
+                      type="password"/>
+                    <div
+                      *ngIf="formRegister.controls['password'].hasError('required')"
+                      class="input-2 invalid-feedback">
+                      Password is required
+                    </div>
+                    <div
+                      *ngIf="formRegister.controls['password'].hasError('minlength')"
+                      class="input-2 invalid-feedback">
+                      Minimal length of password is 8 character
+                    </div>
                   </div>
 
                   <div class="mb-4">
                     <label class="text-2 form-label">Retype Password</label>
-                    <input class="form-control input-1" placeholder="Retype your password" type="password"/>
+                    <input
+                      [class.is-invalid]="formRegister.controls['password'].invalid && formRegister.controls['password'].touched"
+                      class="form-control input-1"
+                      formControlName="password"
+                      placeholder="Retype your password"
+                      type="password"/>
+                    <div
+                      *ngIf="formRegister.controls['password'].hasError('required')"
+                      class="input-2 invalid-feedback">
+                      Retype password is required
+                    </div>
+                    <div
+                      *ngIf="formRegister.controls['password'].hasError('minlength')"
+                      class="input-2 invalid-feedback">
+                      Minimal length of password is 8 character
+                    </div>
                   </div>
 
                   <div class="d-grid gap-2 text-center mb-4 mt-5">
                     <button
-                      [routerLink]="['/', 'dashboard']"
+                      (click)="register()"
+                      [disabled]="formRegister.invalid"
                       class="btn btn-custom-1 btn-group-lg"
-                      type="button">Sign Up</button>
+                      type="button">Sign Up
+                    </button>
                     <hr>
-                    <button class="btn btn-custom-2" type="button">Continue With Google</button>
+                    <button
+                      class="btn btn-custom-2"
+                      type="button">Continue With Google
+                    </button>
                   </div>
 
                   <div class="d-flex align-items-center justify-content-center mt-5">
@@ -57,7 +115,7 @@
                   </div>
                 </form>
 
-              </div>
+              </form>
             </div>
             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
               <div class="text-white px-3 py-4 p-md-5 mx-md-4 mt-5">
